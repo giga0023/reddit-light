@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import postReducer from './features/posts/postSlice'
+import postsReducer from './features/posts/postSlice';
+import commentsReducer from './features/comments/commentsSlice';
 
 export default configureStore({
     reducer: {
-        posts: postReducer
+        posts: postsReducer,
+        comments: commentsReducer
     }
 });
