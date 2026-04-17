@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from './app/features/posts/postSlice';
 
 function App() {
-  useEffect(() => {
-    fetch("https://corsproxy.io/?url=https://www.reddit.com/r/popular.json", {
-      headers: { "User-Agent": "reddit-light-app" }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data))
-  }, [])
+  const dispatch = useDispatch();
+  const { posts, isLoading, hasError } = useSelector(state => state.posts);
 
-  return (
-    <div className="App">
-      <h1>Reddit Light</h1>
-    </div>
-  );
+  useEffect(() => {
+    dispatch(fetchPosts())
+  }, [dispatch])
+
+  if (isLoading) return <div>Loading...</div>
+  if (hasError) return <div>Error</div>
+
+  return <PostList posts={posts} />
 }
 
 export default App;
