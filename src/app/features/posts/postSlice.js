@@ -10,7 +10,7 @@ const initialState = {
 const fetchPosts = createAsyncThunk(
     'posts/fetchPosts',
     async () => {
-        const response = await fetch('https://www.reddit.com/r/popular.json');
+        const response = await fetch('/fakeRedditData.json');
         const json = await response.json();
         return json;
     }

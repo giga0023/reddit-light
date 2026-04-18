@@ -1,4 +1,6 @@
-function PostList(props) {
+import PostCard from './PostCard.jsx';
+
+export default function PostList(props) {
     const post = props.posts
     return (
         <div>
