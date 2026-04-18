@@ -30,7 +30,7 @@ const postsSlice = createSlice({
             } 
         }
     },
-    /* extraReducers : builder => {
+    extraReducers : builder => {
         builder
           .addCase(fetchPosts.pending, (state) => {
             state.isLoading = true
@@ -45,25 +45,7 @@ const postsSlice = createSlice({
             state.isLoading = false
             state.hasError = true
           })
-    }*/
-   extraReducers: (builder) => {
-  builder
-    .addCase(fetchPosts.pending, (state) => {
-      console.log('fetchPosts.pending');
-      state.isLoading = true;
-      state.hasError = false;
-    })
-    .addCase(fetchPosts.fulfilled, (state, action) => {
-      console.log('fetchPosts.fulfilled:', action.payload);
-      state.isLoading = false;
-      state.posts = action.payload.data.children.map(child => child.data);
-    })
-    .addCase(fetchPosts.rejected, (state, action) => {
-      console.log('fetchPosts.rejected:', action.error);
-      state.isLoading = false;
-      state.hasError = true;
-    });
-}
+    }
 });
 
 export const { addPost, updatesUpvotes } = postsSlice.actions;
