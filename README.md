@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Reddit Light Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A lightweight Reddit clone built with **React**, **Redux Toolkit**, and **asynchronous Thunks**.
 
-## Available Scripts
+## 🎯 Objective
 
-In the project directory, you can run:
+Learn how to manage complex state with Redux, fetch asynchronous data, and build reusable React components.
 
-### `npm start`
+## 🚀 Implemented Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ **Redux Toolkit** - Centralized state management
+✅ **Async Thunks** - Asynchronous data fetching
+✅ **React Hooks** - useEffect, useDispatch, useSelector
+✅ **Reusable Components** - PostList and PostCard
+✅ **CSS Styling** - Clean and responsive design
+✅ **Mock Data** - Dummy JSON for testing
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Installation
 
-### `npm test`
+```bash
+npm install
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 Tech Stack
 
-### `npm run build`
+- **React** - UI library
+- **Redux Toolkit** - State management
+- **JavaScript ES6+** - Language
+- **CSS3** - Styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📝 How It Works
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **App.jsx** dispatches `fetchPosts()` on mount
+2. **postSlice.js** manages state (pending/fulfilled/rejected)
+3. **PostList** maps posts and renders **PostCard**
+4. **PostCard** displays title, image, author, and stats
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+// Redux Flow
+dispatch(fetchPosts()) 
+  → pending (loading = true)
+  → fulfilled (posts = data)
+  → PostCard renders
+```
 
-### `npm run eject`
+## ⚠️ API Notes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Currently **uses mock data** (local JSON).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### To use Reddit API in production:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **OAuth Reddit** - Register app at https://www.reddit.com/prefs/apps
+   - Requires credentials and token
+   - Complex authentication setup
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Backend Proxy** - Node.js server with CORS
+```javascript
+   // server.js
+   const cors = require('cors');
+   const https = require('https');
+```
 
-## Learn More
+3. **Alternative APIs** - Public Reddit APIs (with limitations)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Why doesn't it work currently?
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Reddit blocks **CORS requests from the browser** for security. Without a backend or OAuth, direct API calls are impossible.
 
-### Code Splitting
+## 📚 What I Learned
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Redux Toolkit and createAsyncThunk
+- Debugging JSON and CORS errors
+- Functional React components
+- Complex state management
+- Fetch API and error handling
 
-### Analyzing the Bundle Size
+## 🎓 Next Steps (with real API)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [ ] Implement Reddit OAuth
+- [ ] Add search bar for subreddits
+- [ ] Display comments on click
+- [ ] Dark mode toggle
+- [ ] Pagination
 
-### Making a Progressive Web App
+## 🐛 Known Issues
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- ❌ CORS blocks Reddit API fetches
+- ⚠️ Data limited to 2 mock posts
+- ⚠️ Comments not functional without API
