@@ -7,14 +7,21 @@ function App() {
   const dispatch = useDispatch();
   const { posts, isLoading, hasError } = useSelector(state => state.posts);
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(fetchPosts())
-  }, [dispatch])
+  }, [dispatch])*/
+
+  useEffect(() => {
+  console.log('useEffect triggered');
+  console.log('dispatch:', dispatch);
+  const result = dispatch(fetchPosts());
+  console.log('dispatch result:', result);
+}, [dispatch]);
 
   if (isLoading) return <div>Loading...</div>
   if (hasError) return <div>Error</div>
 
   return <PostList posts={posts} />
-}
+};
 
 export default App;
