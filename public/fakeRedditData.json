@@ -1,0 +1,28 @@
+{
+  "data": {
+    "children": [
+      {
+        "data": {
+          "title": "Post di esempio 1",
+          "author": "utente1",
+          "score": 1234,
+          "num_comments": 56,
+          "created_utc": 1617181723,
+          "permalink": "/r/popular/comments/example1",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLDPYbghvoVz0mGyV_NeHt0XOYB3tdppAQRg&s"
+        }
+      },
+      {
+        "data": {
+          "title": "Post di esempio 2",
+          "author": "utente2",
+          "score": 5678,
+          "num_comments": 90,
+          "created_utc": 1617181724,
+          "permalink": "/r/popular/comments/example2",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLDPYbghvoVz0mGyV_NeHt0XOYB3tdppAQRg&s"
+        }
+      }
+    ]
+  }
+};
